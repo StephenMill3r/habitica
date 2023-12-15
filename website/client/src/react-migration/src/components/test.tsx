@@ -3,10 +3,10 @@ import React from 'react';
 type HelloWorldProps = {
     title: string;
     respondFunction: () => void;
-   };
+   }; 
 
-export function HelloWorld({ title, respondFunction }: HelloWorldProps) {
-     return (
+export function HelloWorld ({ title, respondFunction }: HelloWorldProps) {
+  return (
        <div>
          <h2>Hello World Example</h2>
           {title}

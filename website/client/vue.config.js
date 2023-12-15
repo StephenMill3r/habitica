@@ -113,6 +113,21 @@ module.exports = {
         ],
       });
 
+      const tsxRule = config.module.rule('tsx');
+
+      // clear all existing loaders.
+      // if you don't do this, the loader below will be appended to
+      // existing loaders of the rule.
+      tsxRule.uses.clear();
+  
+      // add replacement loader(s)
+      tsxRule
+        .test(/\.tsx$/)
+        .use('ts-loader')
+        .loader('ts-loader')      
+        .end()
+        .end();
+
     // Disable eslint warnings when running the server
     config.module
       .rule('eslint')
