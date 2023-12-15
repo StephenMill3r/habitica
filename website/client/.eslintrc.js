@@ -8,9 +8,10 @@ module.exports = {
   },
   extends: [
     'habitrpg/lib/vue', // Existing Vue-specific rules
+    'eslint:recommended', // Basic recommended ESLint rules    
+    '@vue/typescript/recommended', // Add Vue TypeScript recommended rules
     'plugin:react/recommended', // Add React recommended rules
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-    'eslint:recommended', // Basic recommended ESLint rules
   ],
   ignorePatterns: ['dist/', 'node_modules/'],
   rules: {
@@ -27,6 +28,13 @@ module.exports = {
         normal: 'never',
         component: 'always',
       },
+      'react/react-in-jsx-scope': 'off', // Not needed for React 17+
+      'react/jsx-uses-react': 'off', // Not needed for React 17+
+      'react/jsx-uses-vars': 'error', // Prevent variables used in JSX from being marked as unused
+      '@typescript-eslint/no-unused-vars': ['error'],
+      'no-unused-vars': 'off',
+      'no-undef': 'off',
+      'react/prop-types': 'off',
       svg: 'never',
       math: 'never',
       tsx: 'never',
@@ -49,27 +57,5 @@ module.exports = {
     'react', // Include React plugin    'react', // use the react plugin
     '@typescript-eslint', // use the typescript plugin
   ],
-  overrides: [
-    {
-      files: ['*.ts', '*.tsx'],
-      rules: {    // React-specific rules (add or adjust as needed)
-        'react/react-in-jsx-scope': 'off', // Not needed for React 17+
-        'react/jsx-uses-react': 'off', // Not needed for React 17+
-        'react/jsx-uses-vars': 'error', // Prevent variables used in JSX from being marked as unused
-        // Add more custom rules as per your project's coding standards
-        '@typescript-eslint/no-unused-vars': ['error'],
-        'no-unused-vars': 'off',
-        'no-undef': 'off',
-        'react/prop-types': 'off',
-      },
-      parser: '@typescript-eslint/parser', // specify the ESLint parser
-      parserOptions: {
-        ecmaVersion: 2021, // allows for the parsing of modern ECMAScript features
-        sourceType: 'module', // allows for the use of imports
-        ecmaFeatures: {
-          jsx: true, // allows for the parsing of JSX
-        }
-    },
-  },
-  ]
+  exclude: '/node_modules/',
 };

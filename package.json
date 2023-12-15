@@ -76,6 +76,7 @@
     "stripe": "^12.18.0",
     "superagent": "^8.1.2",
     "ts-loader": "^8.2.0",
+    "typescript": "^5.3.3",
     "universal-analytics": "^0.5.3",
     "useragent": "^2.1.9",
     "uuid": "^9.0.0",
@@ -113,11 +114,13 @@
     "client:unit": "cd website/client && npm run test:unit",
     "start": "gulp nodemon",
     "debug": "gulp nodemon --inspect",
-    "mongo:dev": "run-rs -v 4.1.1 -l ubuntu1804 --keep --dbpath mongodb-data --number 1 --quiet",
+    "mongo:dev": "run-rs -v 4.2.8 -l ubuntu1804 --keep --dbpath mongodb-data --number 1 --quiet",
     "postinstall": "git config --global url.\"https://\".insteadOf git:// && gulp build && cd website/client && npm install",
     "apidoc": "gulp apidoc"
   },
   "devDependencies": {
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "axios": "^1.4.0",
