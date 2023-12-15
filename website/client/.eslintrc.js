@@ -9,7 +9,6 @@ module.exports = {
   ],
   ignorePatterns: ['dist/', 'node_modules/'],
   rules: {
-    'linebreak-style': ['error', 'windows'],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // TODO find a way to let eslint understand webpack aliases
