@@ -8,7 +8,7 @@
     <react-wrapper
          :component="HelloWorldComponent"
          title="Well Hello there"
-         :respondFunction="respondFunction"
+         :respondFunction="() => createOrInviteParty()"
        />
     <div
       id="app-header"
