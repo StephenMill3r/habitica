@@ -7,6 +7,7 @@ import {
   loginRes,
 } from './utils';
 import { appleProfile } from './apple';
+import { dynamicProfile } from './dynamic';
 import { model as User } from '../../models/user';
 import { model as EmailUnsubscription } from '../../models/emailUnsubscription';
 import { sendTxn as sendTxnEmail } from '../email';
@@ -27,7 +28,8 @@ export async function socialEmailToLocal (user) {
   const socialEmail = (user.auth.google && user.auth.google.emails
     && user.auth.google.emails[0].value)
     || (user.auth.facebook && user.auth.facebook.emails && user.auth.facebook.emails[0].value)
-    || (user.auth.apple && user.auth.apple.emails && user.auth.apple.emails[0].value);
+    || (user.auth.apple && user.auth.apple.emails && user.auth.apple.emails[0].value)
+    || (user.auth.dynamic && user.auth.dynamic.emails && user.auth.dynamic.emails[0].value);
   if (socialEmail) {
     const conflictingUser = await User.findOne(
       { 'auth.local.email': socialEmail },
@@ -47,7 +49,9 @@ export async function loginSocial (req, res) { // eslint-disable-line import/pre
   if (!isSupportedNetwork) throw new BadRequest(res.t('unsupportedNetwork'));
 
   let profile = {};
-  if (network === 'apple') {
+  if (network === 'dynamic') {
+    profile = await dynamicProfile(req);
+  } else if (network === 'apple') {
     profile = await appleProfile(req);
   } else {
     const accessToken = req.body.authResponse.access_token;

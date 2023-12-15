@@ -8,8 +8,8 @@ const COMMUNITY_MANAGER_EMAIL = nconf.get('EMAILS_COMMUNITY_MANAGER_EMAIL');
 const translator = shortid('0123456789abcdefghijklmnopqrstuvwxyz');
 
 export function generateUsername () {
-  const newName = `hb-${translator.new()}`;
-  return newName.substring(0, 20);
+  const newName = `dad-${translator.new()}`;
+  return newName.substring(0, 13);
 }
 
 export function loginRes (user, req, res) {
@@ -24,7 +24,7 @@ export function loginRes (user, req, res) {
     // This is a workaround for android not being able to handle sign in with apple better.
     return res.redirect(`/?id=${user._id}&key=${user.apiToken}&newUser=${user.newUser || false}`);
   }
-
+ 
   const responseData = {
     id: user._id,
     apiToken: user.apiToken,

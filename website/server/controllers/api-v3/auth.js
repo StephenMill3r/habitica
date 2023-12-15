@@ -11,7 +11,7 @@ import {
   NotAuthorized,
   BadRequest,
 } from '../../libs/errors';
-import * as passwordUtils from '../../libs/password';
+import * as passwordUtils from '../../libs/password'; 
 import { sendTxn as sendTxnEmail } from '../../libs/email';
 import { encrypt } from '../../libs/encryption';
 import {

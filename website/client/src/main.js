@@ -12,6 +12,9 @@ import StoreModule from './libs/store';
 import './filters/registerGlobals';
 import i18n from './libs/i18n';
 import 'smartbanner.js/dist/smartbanner';
+import ReactWrapper from '@/components/reactWrapper.vue';
+
+Vue.component('ReactWrapper', ReactWrapper);
 
 const IS_PRODUCTION = process.env.NODE_ENV === 'production'; // eslint-disable-line no-process-env
 

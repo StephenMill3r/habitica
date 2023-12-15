@@ -5,6 +5,11 @@
       :group-type="inviteModalGroupType"
     />
     <create-party-modal />
+    <react-wrapper
+         :component="HelloWorldComponent"
+         title="Well Hello there"
+         :respondFunction="respondFunction"
+       />
     <div
       id="app-header"
       class="row"
@@ -130,6 +135,8 @@ import createPartyModal from '../groups/createPartyModal';
 import inviteModal from '../groups/inviteModal';
 import membersModal from '../groups/membersModal';
 import ResizeDirective from '@/directives/resize.directive';
+import ReactWrapper from '../reactWrapper.vue';
+import { HelloWorld } from '../../react-migration/src/components/test.tsx';
 
 export default {
   directives: {
@@ -140,6 +147,7 @@ export default {
     createPartyModal,
     inviteModal,
     membersModal,
+    ReactWrapper,
   },
   data () {
     return {
@@ -157,6 +165,9 @@ export default {
       user: 'user:data',
       partyMembers: 'party:members',
     }),
+    HelloWorldComponent () {
+      return HelloWorld;
+    },
     showHeader () {
       if (this.$store.state.hideHeader) return false;
       return true;
