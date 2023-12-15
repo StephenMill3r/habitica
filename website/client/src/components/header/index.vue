@@ -6,9 +6,7 @@
     />
     <create-party-modal />
     <react-wrapper
-         :component="HelloWorldComponent"
-         title="Well Hello there"
-         :respondFunction="() => createOrInviteParty()"
+         :component="DynamicComponent"
        />
     <div
       id="app-header"
@@ -137,6 +135,7 @@ import membersModal from '../groups/membersModal';
 import ResizeDirective from '@/directives/resize.directive';
 import ReactWrapper from '../reactWrapper.vue';
 import { HelloWorld } from '../../react-migration/src/components/test.tsx';
+import { App } from '../../react-migration/src/App.tsx';
 
 export default {
   directives: {
@@ -167,6 +166,9 @@ export default {
     }),
     HelloWorldComponent () {
       return HelloWorld;
+    },    
+    DynamicComponent () {
+      return App;
     },
     showHeader () {
       if (this.$store.state.hideHeader) return false;
